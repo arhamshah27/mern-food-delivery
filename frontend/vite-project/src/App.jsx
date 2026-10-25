@@ -50,10 +50,12 @@ import LiveFleetMap from "./pages/admin/LiveFleetMap";
 // System & Error Pages
 import NotFound from "./pages/NotFound";
 import Forbidden from "./pages/Forbidden";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ThemeProvider>
         <AuthProvider>
           <CartProvider>
