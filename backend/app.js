@@ -23,8 +23,32 @@ const notFound = require("./middlewares/notFoundMiddleware");
 const errorHandler = require("./middlewares/errorMiddleware");
 
 const path = require("path");
+const connectDB = require("./config/db");
+const { connectCloudinary } = require("./config/cloudinary");
 
 const app = express();
+
+// Configure Cloudinary synchronously
+try {
+    connectCloudinary();
+} catch (err) {
+    console.warn("Cloudinary configuration notice:", err.message);
+}
+
+// ─── Ensure DB Connection for Serverless Runtimes (Vercel) ──────────
+app.use(async (_req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (err) {
+        console.error("Database connection error in request:", err.message);
+        return res.status(500).json({
+            success: false,
+            message: "Database connection failed",
+            error: err.message,
+        });
+    }
+});
 
 // Serve local uploaded files as fallback
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
@@ -40,12 +64,25 @@ app.use(
 app.use(
     cors({
         origin: (origin, callback) => {
-            // Allow requests with no origin (mobile apps, curl, etc.) or any localhost port or CLIENT_URL
-            if (!origin || /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin) || origin === process.env.CLIENT_URL) {
-                callback(null, true);
-            } else {
-                callback(null, true); // Permissive in dev so testing never breaks
+            // Allow requests with no origin (same-origin, curl, mobile apps)
+            if (!origin) return callback(null, true);
+            // Allow localhost on any port for development
+            if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+                return callback(null, true);
             }
+            // Allow Vercel preview & production deployments
+            if (/^https:\/\/.*\.vercel\.app$/.test(origin)) {
+                return callback(null, true);
+            }
+            // Allow custom domain set in CLIENT_URL
+            if (process.env.CLIENT_URL && origin === process.env.CLIENT_URL) {
+                return callback(null, true);
+            }
+            // Permissive in non-production environments
+            if (process.env.NODE_ENV !== "production") {
+                return callback(null, true);
+            }
+            return callback(new Error(`CORS blocked for origin: ${origin}`));
         },
         credentials: true, // Required for cookies
     })
