@@ -126,9 +126,12 @@ const FoodDetails = () => {
           </div>
 
           {/* Prep time badge */}
-          <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#08090D]/85 backdrop-blur-md text-xs font-medium text-[#F5F0E6] border border-[#C6A15B]/20">
+          <div
+            data-preserve-dark="true"
+            className="prep-badge absolute bottom-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#08090D]/90 backdrop-blur-md text-xs font-medium text-[#F5F0E6] border border-[#C6A15B]/30 z-10"
+          >
             <Clock className="w-4 h-4 text-[#C6A15B]" />
-            <span>Approx. {food.preparationTime || 20} mins prep</span>
+            <span className="text-[#F5F0E6] font-medium">Approx. {food.preparationTime || 20} mins prep</span>
           </div>
         </div>
 

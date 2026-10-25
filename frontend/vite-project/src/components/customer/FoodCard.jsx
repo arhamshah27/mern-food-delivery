@@ -84,9 +84,12 @@ const FoodCard = ({ food, onOpenAddOns }) => {
 
         {/* Preparation Time Floating Badge */}
         {food.preparationTime && (
-          <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#08090D]/85 backdrop-blur-md text-[11px] font-semibold border border-[#C6A15B]/30 pointer-events-none shadow-md">
+          <div
+            data-preserve-dark="true"
+            className="prep-badge absolute bottom-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#08090D]/90 backdrop-blur-md text-[11px] font-semibold border border-[#C6A15B]/35 pointer-events-none shadow-md z-10"
+          >
             <Clock className="w-3.5 h-3.5 text-[#C6A15B] shrink-0" />
-            <span className="text-[#F5F0E6]">{food.preparationTime} mins</span>
+            <span className="text-[#F5F0E6] font-medium leading-none">{food.preparationTime} mins</span>
           </div>
         )}
       </div>

@@ -235,31 +235,53 @@ html.light h6:not([class*="text-transparent"]):not([class*="text-orange"]):not([
 }
 
 /* Light mode safeguard: prevent rogue white text on light cards & tables (excludes hero banner & dark-preserved elements) */
-html.light .text-white:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not([class*="badge"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
-html.light .text-slate-100:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
-html.light .text-slate-200:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+html.light .text-white:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not([class*="badge"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *),
+html.light .text-slate-100:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *),
+html.light .text-slate-200:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *) {
   color: #1C1A16;
 }
 
-/* In light mode, light ivory tokens become legible espresso & antique gold (except preserved dark components) */
-html.light .text-\[\#F5F0E6\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+/* In light mode, light ivory tokens become legible espresso & antique gold (except preserved dark components & prep badges) */
+html.light .text-\[\#F5F0E6\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *) {
   color: #1C1A16;
 }
 
-html.light .text-\[\#D8D4CA\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+html.light .text-\[\#D8D4CA\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *) {
   color: #4B463E;
 }
 
-html.light .text-\[\#E6D3A3\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+html.light .text-\[\#E6D3A3\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *) {
   color: #8E6E30;
 }
 
-html.light .text-\[\#A5A5AD\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+html.light .text-\[\#A5A5AD\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *) {
   color: #5C574E;
 }
 
-html.light .text-\[\#868896\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+html.light .text-\[\#868896\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not([data-preserve-dark="true"] *):not(.preserve-dark *):not(.prep-badge *):not([class*="bg-\[\#08090D\]"] *) {
   color: #6E685C;
+}
+
+/* ── Floating Preparation Time Badge (Guaranteed High Contrast in Light & Dark Mode) ── */
+.prep-badge,
+html.light .prep-badge,
+html.dark .prep-badge {
+  background-color: rgba(8, 9, 13, 0.90) !important;
+  border: 1px solid rgba(198, 161, 91, 0.35) !important;
+  color-scheme: dark;
+}
+
+.prep-badge,
+.prep-badge *,
+.prep-badge span,
+html.light .prep-badge *,
+html.light .prep-badge span {
+  color: #F5F0E6 !important;
+}
+
+.prep-badge svg,
+html.light .prep-badge svg {
+  color: #C6A15B !important;
 }
 
 /* ── Hero Banner Cinematic Preservation (Always Dark & Luminous in All Modes) ── */
