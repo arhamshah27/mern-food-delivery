@@ -1,0 +1,377 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-royal-black: #08090D;
+  --color-royal-charcoal: #14151A;
+  --color-royal-surface: #1B1C23;
+  --color-royal-card: #181920;
+  --color-royal-border: #242632;
+  --color-royal-gold: #C6A15B;
+  --color-royal-champagne: #E6D3A3;
+  --color-royal-ivory: #F5F0E6;
+  --color-royal-muted: #A5A5AD;
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-royal: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ── Light Mode Palette (Palace Ivory, Rich Antique Gold & Deep Espresso) ─── */
+html.light,
+html:not(.dark) {
+  --color-slate-950: #0E0D0B;
+  --color-slate-900: #1C1A16; /* Palace deep charcoal / espresso - high contrast primary text */
+  --color-slate-850: #2C2923;
+  --color-slate-800: #3D3930; /* Primary dark heading / body text */
+  --color-slate-700: #544F44; /* Readable secondary text */
+  --color-slate-600: #6E685C; /* Medium secondary text */
+  --color-slate-500: #888173; /* Muted label text */
+  --color-slate-400: #A8A193; /* Placeholder text */
+  --color-slate-300: #D8D1C3; /* Soft border */
+  --color-slate-200: #EADBCE; /* Subtle card border / divider */
+  --color-slate-100: #F4ECE1; /* Elevated warm ivory surface */
+  --color-slate-50: #FAF8F5;  /* Foundation palace ivory */
+
+  --color-orange-500: #9E7A35; /* Rich royal antique gold */
+  --color-orange-400: #B38C44;
+  --color-orange-600: #7E5F22;
+  --color-amber-500: #9E7A35;
+  --color-amber-400: #B38C44;
+  --color-amber-600: #7E5F22;
+
+  --color-royal-gold: #9E7A35;
+  --color-royal-champagne: #8E6E30;
+  --color-royal-ivory: #1C1A16;
+  --color-royal-muted: #544F44;
+}
+
+/* ── Dark Mode Palette (Royal Deep Black, Charcoal & Antique Gold) ─── */
+html.dark,
+html {
+  --color-slate-950: #08090D; /* Deep black foundation */
+  --color-slate-900: #14151A; /* Royal charcoal surface */
+  --color-slate-850: #191B22; /* Elevated charcoal */
+  --color-slate-800: #232530; /* Refined luxury border */
+  --color-slate-700: #303342; /* Subtle divider */
+  --color-slate-600: #5C5E6E; 
+  --color-slate-500: #868896; 
+  --color-slate-400: #A5A5AD; /* Muted gray body text */
+  --color-slate-300: #D8D4CA; /* Soft ivory gray */
+  --color-slate-200: #EDE7DC; /* High contrast ivory */
+  --color-slate-100: #F5F0E6; /* Pure ivory white */
+  --color-slate-50: #14151A;
+
+  --color-orange-500: #C6A15B; /* Antique gold accent */
+  --color-orange-400: #E6D3A3; /* Champagne gold highlight */
+  --color-orange-600: #A3803C; /* Burnished rich gold */
+  --color-amber-500: #C6A15B;  /* Antique gold */
+  --color-amber-400: #E6D3A3;  /* Champagne gold */
+  --color-amber-600: #A3803C;
+
+  --color-royal-gold: #C6A15B;
+  --color-royal-champagne: #E6D3A3;
+  --color-royal-ivory: #F5F0E6;
+  --color-royal-muted: #A5A5AD;
+}
+
+/* ── Base Styles ──────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #08090D;
+  color: #F5F0E6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.light body,
+html:not(.dark) body {
+  background-color: #FAF8F5;
+  color: #1C1A16;
+}
+
+html.dark body {
+  background-color: #08090D;
+  color: #F5F0E6;
+}
+
+/* Headings use the royal serif typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.font-serif {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.font-royal {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.font-sans {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+/* ── Royal Luxury Gradients & Borders ─────────────────────────────── */
+.gold-gradient {
+  background: linear-gradient(135deg, #C6A15B 0%, #E6D3A3 50%, #9F7E3C 100%);
+}
+
+html.light .gold-gradient {
+  background: linear-gradient(135deg, #B38C44 0%, #D8BE7A 50%, #8E6E30 100%);
+}
+
+.gold-gradient-hover:hover {
+  background: linear-gradient(135deg, #D5B16B 0%, #F0DFB5 50%, #B08D46 100%);
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #F5F0E6 0%, #E6D3A3 40%, #C6A15B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .gold-text {
+  background: linear-gradient(135deg, #1C1A16 0%, #8E6E30 45%, #B38C44 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-text-accent {
+  background: linear-gradient(135deg, #E6D3A3 0%, #C6A15B 60%, #9F7E3C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .gold-text-accent {
+  background: linear-gradient(135deg, #7E5F22 0%, #B38C44 55%, #604614 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border: 1px solid rgba(198, 161, 91, 0.28);
+}
+
+html.light .gold-border {
+  border: 1px solid rgba(158, 122, 53, 0.28);
+}
+
+.gold-border-subtle {
+  border: 1px solid rgba(198, 161, 91, 0.16);
+}
+
+html.light .gold-border-subtle {
+  border: 1px solid rgba(158, 122, 53, 0.18);
+}
+
+.gold-glow {
+  box-shadow: 0 10px 30px -8px rgba(198, 161, 91, 0.2);
+}
+
+html.light .gold-glow {
+  box-shadow: 0 10px 30px -8px rgba(158, 122, 53, 0.16);
+}
+
+.gold-glow-subtle {
+  box-shadow: 0 4px 20px -2px rgba(198, 161, 91, 0.12);
+}
+
+html.light .gold-glow-subtle {
+  box-shadow: 0 4px 20px -2px rgba(158, 122, 53, 0.08);
+}
+
+.royal-card {
+  background-color: #14151A;
+  border: 1px solid rgba(198, 161, 91, 0.18);
+  border-radius: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.royal-card:hover {
+  border-color: rgba(198, 161, 91, 0.38);
+  box-shadow: 0 12px 35px -10px rgba(198, 161, 91, 0.15);
+  transform: translateY(-2px);
+}
+
+html.light .royal-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(158, 122, 53, 0.22);
+  box-shadow: 0 4px 20px -2px rgba(28, 26, 22, 0.06), 0 1px 3px rgba(28, 26, 22, 0.04);
+}
+
+html.light .royal-card:hover {
+  border-color: rgba(158, 122, 53, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(158, 122, 53, 0.16);
+}
+
+/* ── Royal Separator / Divider ────────────────────────────────────── */
+.royal-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(198, 161, 91, 0.35) 50%, transparent 100%);
+}
+
+html.light .royal-divider {
+  background: linear-gradient(90deg, transparent 0%, rgba(158, 122, 53, 0.35) 50%, transparent 100%);
+}
+
+/* ── Light Mode Typography & Visibility Safeguards ────────────────── */
+html.light h1:not([class*="text-transparent"]):not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-red"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
+html.light h2:not([class*="text-transparent"]):not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-red"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
+html.light h3:not([class*="text-transparent"]):not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-red"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
+html.light h4:not([class*="text-transparent"]):not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-red"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
+html.light h5:not([class*="text-transparent"]):not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-red"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
+html.light h6:not([class*="text-transparent"]):not([class*="text-orange"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-red"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+  color: #1C1A16;
+}
+
+/* Light mode safeguard: prevent rogue white text on light cards & tables (excludes hero banner & dark-preserved elements) */
+html.light .text-white:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not([class*="badge"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
+html.light .text-slate-100:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *),
+html.light .text-slate-200:not(button):not(a[class*="bg-"]):not([class*="bg-"]):not([class*="from-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+  color: #1C1A16;
+}
+
+/* In light mode, light ivory tokens become legible espresso & antique gold (except preserved dark components) */
+html.light .text-\[\#F5F0E6\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+  color: #1C1A16;
+}
+
+html.light .text-\[\#D8D4CA\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+  color: #4B463E;
+}
+
+html.light .text-\[\#E6D3A3\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+  color: #8E6E30;
+}
+
+html.light .text-\[\#A5A5AD\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+  color: #5C574E;
+}
+
+html.light .text-\[\#868896\]:not([class*="bg-"]):not([class*="from-"]):not(button):not(a[class*="bg-"]):not(.hero-banner *):not([data-preserve-dark] *):not(.preserve-dark *) {
+  color: #6E685C;
+}
+
+/* ── Hero Banner Cinematic Preservation (Always Dark & Luminous in All Modes) ── */
+.hero-banner,
+[data-preserve-dark="true"],
+.preserve-dark {
+  color-scheme: dark;
+}
+
+html.light .hero-banner h1,
+html.light [data-preserve-dark="true"] h1,
+html.light .preserve-dark h1,
+html.light .hero-banner .hero-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+}
+
+html.light .hero-banner p,
+html.light [data-preserve-dark="true"] p,
+html.light .preserve-dark p,
+html.light .hero-banner .hero-subtitle {
+  color: rgba(245, 240, 230, 0.92) !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85) !important;
+}
+
+html.light .hero-banner .hero-badge,
+html.light [data-preserve-dark="true"] .hero-badge,
+html.light .preserve-dark .hero-badge {
+  background-color: rgba(8, 9, 13, 0.82) !important;
+  border-color: rgba(198, 161, 91, 0.45) !important;
+  color: #E6D3A3 !important;
+}
+
+html.light .hero-banner .hero-badge span,
+html.light [data-preserve-dark="true"] .hero-badge span {
+  color: #E6D3A3 !important;
+}
+
+html.light .hero-banner .hero-props,
+html.light .hero-banner .hero-props span,
+html.light [data-preserve-dark="true"] .hero-props,
+html.light [data-preserve-dark="true"] .hero-props span {
+  color: rgba(245, 240, 230, 0.9) !important;
+}
+
+/* Ensure inputs in light mode have crystal clear contrast */
+html.light input:not([class*="text-"]),
+html.light textarea:not([class*="text-"]),
+html.light select:not([class*="text-"]) {
+  color: #1C1A16;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #888173;
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08090D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232530;
+  border-radius: 9999px;
+  border: 1px solid rgba(198, 161, 91, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C6A15B;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #D8D1C3;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #9E7A35;
+}
+
+/* ── Selection ────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(198, 161, 91, 0.35);
+  color: #F5F0E6;
+}
+
+html.light ::selection {
+  background: rgba(158, 122, 53, 0.25);
+  color: #1C1A16;
+}
+
+/* ── Smooth focus ring ────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #C6A15B;
+  outline-offset: 2px;
+}
+
+/* ── Utility keyframes & classes ─────────────────────────────────── */
+@keyframes pulseGold {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.98); }
+}
+
+.animate-pulse-gold {
+  animation: pulseGold 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
